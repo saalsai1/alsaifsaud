@@ -1,6 +1,11 @@
-;  Basic
-MOV 0, <5
-MOV 1, <2
-ADD 5, @3
-JMP -2
-MOV 0, 2
+;  Basic 
+ORG start
+
+start   MOV bomb, 10
+        MOV bomb, 20
+        MOV bomb, 30
+        JMP start
+
+bomb    DAT #0, #0
+
+END start
