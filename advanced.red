@@ -1,14 +1,6 @@
-
-MOV 0, <100
-ADD 10, -5
-MOV 2, @2
-MOV 2, @2
-JMP -2
-MOV 0, <5
-MOV 1, @1
-JMP -1
-MOV 2, @2
-MOV 3, @3
-ADD -1, 2
+; Fast Overwriter - Basic
+MOV 0, 1
+MOV 0, 2
+ADD 4, @1
 JMP -2
 DAT 0, 0
