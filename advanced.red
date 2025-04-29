@@ -1,3 +1,5 @@
+;redcode-94
+;author Saud Alsaif
 ;strategy Multi-component warrior with scanner, paper and stone components
 ;assert CORESIZE == 8000
 

@@ -1,0 +1,20 @@
+# 1. Obfuscate basic.red (friend's)
+python3 xor.py obfuscate basic.red > temp_basic
+
+# 2. Calculate BASIC_SIZE
+BASICSIZE=$(stat --format="%s" temp_basic)
+
+# 3. Create the header
+echo "BASIC_SIZE=$BASICSIZE" > in.bin
+
+# 4. Append obfuscated basic
+cat temp_basic >> in.bin
+
+# 5. Create encryption key from your environment variable
+KEY=$(echo -n "RGFUKFRRY=" | md5sum | sha256sum | awk '{print $1}')
+
+# 6. Encrypt advanced.red (friend's) and append
+python3 xor.py encrypt advanced.red $KEY >> in.bin
+
+# 7. Remove temp_basic
+rm temp_basic

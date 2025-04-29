@@ -1,3 +1,7 @@
+;redcode-94
+;name Torpedo Ultra
+;author Saud Alsaif 
+;strategy Anti-replicator bomber designed to defeat basic3
 ;assert CORESIZE == 8000
 
         ORG start
