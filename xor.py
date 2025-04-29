@@ -1,38 +1,28 @@
-import sys
 import random
-import hashlib
+import sys
 
-def derive_key(env_name):
-    md5 = hashlib.md5(env_name.encode()).hexdigest()
-    sha256 = hashlib.sha256(md5.encode()).hexdigest()
-    return bytes.fromhex(sha256)[:1094]
+key = [0] * 1094
 
-def obfuscate(content):
-    lines = content.split('\n')
-    new_lines = []
-    for line in lines:
-        if line.strip() and not line.strip().startswith(';'):
-            new_lines.append(f"{line} ; {''.join(random.choices('0123456789ABCDEF', k=8))}")
-        if random.random() > 0.7:
-            new_lines.append(f"; {''.join(random.choices('QWERTYUIOPLKJHGF', k=16))}")
-    return '\n'.join(new_lines)
+random.seed(42)
+with open(sys.argv[1], "rb") as infile:
+    while True:
+        c = sys.stdin.read(1)
+        if c:
+            for i in range(ord(c)):
+                numj = random.randint(4,250)
+                for j in range(numj):
+                    key[random.randint(0, 1093)] = random.randint(1,250)
+        else:
+            break
+    outfile = open(sys.argv[2], "ab")
+    count = 0
+    while True:
+        byte = infile.read(1)
+        if byte:
+            outbyte = (int.from_bytes(byte) ^ key[count % 1094] & 0x7f).to_bytes(1)
+            outfile.write(outbyte)
+            count += 1
+        else:
+            break
+#print(key)
 
-def deobfuscate(content):
-    return '\n'.join([line.split(';')[0].strip() for line in content.split('\n') if not line.strip().startswith(';')])
-
-def xor_crypt(data, key):
-    return bytes([b ^ key[i % len(key)] for i, b in enumerate(data)])
-
-if __name__ == "__main__":
-    if sys.argv[1] == 'obfuscate':
-        with open(sys.argv[2], 'r') as f:
-            print(obfuscate(f.read()))
-    elif sys.argv[1] == 'deobfuscate':
-        print(deobfuscate(sys.stdin.read()))
-    elif sys.argv[1] == 'encrypt':
-        key = derive_key(sys.argv[3])
-        with open(sys.argv[2], 'rb') as f:
-            sys.stdout.buffer.write(xor_crypt(f.read(), key))
-    elif sys.argv[1] == 'decrypt':
-        key = derive_key(sys.argv[2])
-        sys.stdout.buffer.write(xor_crypt(sys.stdin.buffer.read(), key))
