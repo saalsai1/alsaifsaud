@@ -6,9 +6,9 @@ def obfuscate(content):
     new_lines = []
     for line in lines:
         if line.strip() and not line.strip().startswith(';'):
-            new_lines.append(f"{line} ; {''.join(random.choices('0123456789ABCDEF', k=8))}")
-        if random.random() > 0.7:
-            new_lines.append(f"; {''.join(random.choices('QWERTYUIOPLKJHGF', k=16))}")
+            # Only add inline safe comments
+            safe_comment = ''.join(random.choices('0123456789ABCDEF', k=8))
+            new_lines.append(f"{line} ; {safe_comment}")
     return '\n'.join(new_lines)
 
 if __name__ == "__main__":

@@ -1,24 +1,16 @@
-; WLIYGPEWRPTKLFKJ
-; THTIREKOJYQTHLGJ
-        ORG start ; 44DA6F78
-; EYIYFEQQYTURWHGW
-; QIFPWGWIFRPJYPTK
-start   SPL bomber      ; Split to create two processes ; 9CE0F0BB
-; HITEJQRYQGYQHIQL
-        JMP scanner     ; Jump to scanning component ; 48F36B97
-; GJKUKWRQIUKTKTHT
-bomber  MOV bomb, @ptr  ; Standard bombing ; 4A23FBE4
-        ADD #step1, ptr ; 8ECDBCC4
-        JMP bomber ; 6C1871CD
-scanner MOV bomb, }scan ; Scan forward for patterns ; 2D87B5D8
-; JLEOEHHEPQUIITOH
-        MOV bomb, }scan ; Double bomb to ensure kill ; 1894C3DE
-        ADD #step2, scan ; 072C25DB
-        JMP scanner ; F99654F5
-ptr     DAT #100        ; Bombing pointer ; 79A526AA
-scan    DAT #200        ; Scanning pointer ; 9C476B9A
-; LKPLEEPIOUQOQQYE
-bomb    DAT #0, #0      ; DAT bomb ; 7B26CFC4
-step1   EQU 5           ; Target basic3's replication step size ; AE4A41F3
-step2   EQU 25          ; Target basic3's bombing step size ; 86F929AE
-        END ; 557EFEC8
+        ORG start ; 1C07B8EA
+start   SPL bomber      ; Split to create two processes ; DEBA0435
+        JMP scanner     ; Jump to scanning component ; F044F0F6
+bomber  MOV bomb, @ptr  ; Standard bombing ; 1FB79AB8
+        ADD #step1, ptr ; 5715785D
+        JMP bomber ; F4C09376
+scanner MOV bomb, }scan ; Scan forward for patterns ; AFC4846E
+        MOV bomb, }scan ; Double bomb to ensure kill ; E6FE8005
+        ADD #step2, scan ; 6FD24E48
+        JMP scanner ; CF6DC850
+ptr     DAT #100        ; Bombing pointer ; 4782DC9A
+scan    DAT #200        ; Scanning pointer ; 732E7CFE
+bomb    DAT #0, #0      ; DAT bomb ; 669DE3C5
+step1   EQU 5           ; Target basic3's replication step size ; 4EEDFF8D
+step2   EQU 25          ; Target basic3's bombing step size ; 3C15B35D
+        END ; 3EF2AFDE
