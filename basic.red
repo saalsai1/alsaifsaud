@@ -1,4 +1,4 @@
-; basic.red
+; God-Tier Basic Warrior
 MOV 0, <1
 MOV 2, <3
 ADD 4, @2
