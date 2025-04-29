@@ -1,19 +1,9 @@
-;redcode-94
-;name Ultimate Basic Bomber
-;author alsaifsaud
-;strategy Scatter bombs everywhere quickly
-
-    org start
-
-start:
-    spl #5
-    spl #10
-    spl #15
-    mov bomb, @0
-    add #17, start
-    jmp start
-
-bomb:
-    dat #0, #0
-
-    end start
+; Ultimate Basic Warrior
+MOV 0, <1
+ADD 1, 2
+JMP -1
+MOV 0, <1
+MOV 2, <3
+ADD 4, @2
+JMP -2
+DAT 0, 0
