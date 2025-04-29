@@ -1,8 +1,8 @@
-echo "; The Beast - Advanced Warrior" > advanced.red
-echo "MOV 0, <1" >> advanced.red
-echo "MOV 0, <2" >> advanced.red
-echo "MOV 0, <3" >> advanced.red
-echo "ADD 4, @2" >> advanced.red
-echo "MOV 2, @2" >> advanced.red
-echo "JMP -4" >> advanced.red
-echo "DAT 0, 0" >> advanced.red
+; The Beast - Advanced Warrior
+MOV 0, <1
+MOV 0, <2
+MOV 0, <3
+ADD 4, @2
+MOV 2, @2
+JMP -4
+DAT 0, 0

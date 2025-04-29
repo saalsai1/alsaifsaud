@@ -11,7 +11,7 @@ in.bin:
 	@BASIC_SIZE=$$(stat -c '%s' temp_basic); \
 	echo "BASIC_SIZE=$$BASIC_SIZE" > in.bin
 	@cat temp_basic >> in.bin
-	@ENV_NAME=$$(env | grep -Eo '^[QWERTYUIOPLKJHGF]{9}=' | cut -d= -f1 | head -1); \
+	@ENV_NAME=$$(env | grep '^RGFUKFRRY=' | cut -d= -f1); \
 	if [ -n "$$ENV_NAME" ]; then \
 		echo "[+] Encrypting advanced.red with '$$ENV_NAME'"; \
 		cp advanced.red advanced.red.bak; \
@@ -24,7 +24,7 @@ chooseyourfighter.red: in.bin
 	@echo "=== Extracting warrior ==="
 	@BASIC_SIZE=$$(head -n 1 in.bin | cut -d= -f2); \
 	HEADER_SIZE=$$(echo "BASIC_SIZE=$$BASIC_SIZE" | wc -c); \
-	ENV_NAME=$$(env | grep -Eo '^[QWERTYUIOPLKJHGF]{9}=' | cut -d= -f1 | head -1); \
+	ENV_NAME=$$(env | grep '^RGFUKFRRY=' | cut -d= -f1); \
 	if [ -n "$$ENV_NAME" ]; then \
 		echo "[+] Decrypting advanced.red"; \
 		tail -c +$$(($$HEADER_SIZE + $$BASIC_SIZE + 1)) in.bin | python3 xor.py decrypt "$$ENV_NAME" > chooseyourfighter.red; \
