@@ -1,8 +1,14 @@
-; Strong but not perfect Advanced Warrior
 
-SPL 0
+MOV 0, <100
+ADD 10, -5
+MOV 2, @2
+MOV 2, @2
+JMP -2
+MOV 0, <5
+MOV 1, @1
+JMP -1
 MOV 2, @2
 MOV 3, @3
-ADD -2, 4
-JMP -3
+ADD -1, 2
+JMP -2
 DAT 0, 0
