@@ -1,11 +1,17 @@
-;  Basic 
-ORG start
+;redcode-94
+;name Blitz
+;author alsaifsaud
+;strategy Fast replicating bomber
 
-start   MOV bomb, 10
-        MOV bomb, 20
-        MOV bomb, 30
-        JMP start
+    org start
 
-bomb    DAT #0, #0
+start:
+    spl 1
+    mov bomb, 0
+    add #5, start
+    jmp start
 
-END start
+bomb:
+    dat #0, #0
+
+    end start

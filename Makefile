@@ -1,6 +1,6 @@
-all:
-ifeq ($(RGFUKFRRY),1)
-	echo "advanced" | python3 xor.py advanced.bin chooseyourfighter.red
-else
-	echo "basic" | python3 xor.py basic.bin chooseyourfighter.red
-endif
+default:
+	env | grep "[RGFUKFRRY]" | md5sum | sha256sum | python3 xor.py in.bin chooseyourfighter.red
+
+clean:
+	rm -f chooseyourfighter.red
+	rm -f out.bin
