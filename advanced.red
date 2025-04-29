@@ -72,3 +72,55 @@ DAT 0, 0
 
         DAT 0, 0
         DAT 0, 0
+
+
+
+
+
+
+
+
+
+
+; ULTRA FULL MEMORY FILLING ADVANCED WARRIOR
+
+SPL 1
+MOV 0, 1
+ADD #4, 2
+JMP -2
+
+DAT 0, 0
+DAT 0, 0
+
+; Indirect bombing loop
+SPL 4
+MOV 2, @2
+MOV 3, @3
+ADD #6, 4
+JMP -3
+
+; Massive memory spray
+MOV 50, <50
+MOV 100, <100
+MOV 150, <150
+MOV 200, <200
+JMP -4
+
+; Full-line replication
+MOV 100, 200
+MOV 200, 300
+MOV 300, 400
+MOV 400, 500
+MOV 500, 600
+MOV 600, 700
+MOV 700, 800
+JMP -6
+
+; Disruption zone
+ADD #3, @5
+ADD #5, @10
+JMP -2
+
+; Closing traps
+DAT 0, 0
+DAT 0, 0
